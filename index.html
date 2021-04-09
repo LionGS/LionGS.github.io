@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="uid">
+<button onclick="req();">submit</button>
+<hr>
+<br>
+
+<div id="example-table"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="https://unpkg.com/tabulator-tables@4.1.4/dist/css/tabulator.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.4/dist/js/tabulator.min.js"></script>
+
+<script>
+    var tabledata = [
+        {id: 1, code: "KINGADEL", result: 0, response: ''},
+        {id: 2, code: "DANJANGNIMLUV", result: 0, response: ''},
+        {id: 3, code: "GUMANKM", result: 0, response: ''},
+        {id: 4, code: "BIGUPDATE", result: 0, response: ''},
+        {id: 5, code: "SENAYAHO", result: 0, response: ''},
+        {id: 6, code: "VELVET", result: 0, response: ''},
+        {id: 7, code: "GOGOSENA", result: 0, response: ''},
+        {id: 8, code: "COMINGSOON", result: 0, response: ''},
+        {id: 9, code: "NEWSCENARIO", result: 0, response: ''},
+        {id: 10, code: "DUGUDUGU", result: 0, response: ''},
+        {id: 11, code: "EVENTMATJIB", result: 0, response: ''},
+        {id: 12, code: "LADY", result: 0, response: ''},
+        {id: 13, code: "LEGENDSENA", result: 0, response: ''},
+        {id: 14, code: "REINFORCE", result: 0, response: ''},
+        {id: 15, code: "DUDUDUNGA", result: 0, response: ''},
+        {id: 16, code: "ONESHOT", result: 0, response: ''},
+        {id: 17, code: "KEEEEE", result: 0, response: ''},
+        {id: 18, code: "8RAID8", result: 0, response: ''},
+        {id: 19, code: "EVAN", result: 0, response: ''},
+        {id: 20, code: "4RAID4", result: 0, response: ''},
+        {id: 21, code: "WOWSENA", result: 0, response: ''},
+        {id: 22, code: "LADYKILLER", result: 0, response: ''},
+        {id: 23, code: "HAPPYCOCO", result: 0, response: ''},
+        {id: 24, code: "OLDRUDY", result: 0, response: ''},
+        {id: 25, code: "IMSOHOT", result: 0, response: ''},
+        {id: 26, code: "UPDATE", result: 0, response: ''},
+        {id: 27, code: "SENAFOREVER", result: 0, response: ''},
+        {id: 28, code: "SEYAHO", result: 0, response: ''},
+        {id: 29, code: "SKNIGHTS2", result: 0, response: ''},
+        {id: 30, code: "HISENA2", result: 0, response: ''},
+        {id: 31, code: "7INFINITE7", result: 0, response: ''},
+        {id: 32, code: "TPQMSSKDLCM2", result: 0, response: ''},
+        {id: 33, code: "GREATEVENT", result: 0, response: ''},
+        {id: 34, code: "2SEVEN2", result: 0, response: ''},
+        {id: 35, code: "SK2FORUM", result: 0, response: ''},
+        {id: 36, code: "SENAINSSA", result: 0, response: ''},
+        {id: 37, code: "2S2E2V2E2N", result: 0, response: ''},
+    ];
+
+    function req() {
+        var uid = $('#uid').val()
+        for (var a in tabledata) {
+            let i = a
+            $.ajax({
+                type: 'POST',
+                url: 'https://couponview.netmarble.com/coupon/sknightsmmo/1290/apply',
+                data: {
+                    'pid': uid,
+                    'channelCode': 100,
+                    'couponCode': tabledata[i]['code'],
+                    'worldId': '',
+                    'nickname': ''
+                },
+                success: function (data) {
+                    if (data['resultCode'] === 'SUCCESS') {
+                        tabledata[i]['result'] = 1
+                    }
+                    tabledata[i]['response'] = data['resultCode']
+                    table.updateData(tabledata)
+                }
+            })
+        }
+    }
+
+    var table = new Tabulator("#example-table", {
+        data: tabledata,           //load row data from array
+        reactiveData: true,
+        layout: "fitDataFill",      //fit columns to width of table
+        responsiveLayout: "hide",  //hide columns that dont fit on the table
+        tooltips: true,            //show tool tips on cells
+        addRowPos: "top",          //when adding a new row, add it to the top of the table
+        history: true,             //allow undo and redo actions on the table
+        movableColumns: true,      //allow column order to be changed
+        resizableRows: true,       //allow row order to be changed
+        columns: [                 //define the table columns
+            {title: "Code", field: "code", width: 300, editor: "input"},
+            {
+                title: "status",
+                field: "result",
+                width: 90,
+                hozAlign: "center",
+                formatter: "tickCross",
+                sorter: "boolean",
+                editor: false
+            },
+            {title: "response", field: "response", width: 180, editor: false},
+        ],
+    });
+</script>
+</body>
+</html>
