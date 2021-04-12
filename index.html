@@ -5,10 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-<input type="text" id="uid">
-<button onclick="req();">submit</button>
+<span>회원 번호 : </span><input type="text" id="uid">
+<button onclick="req();">쿠폰 사용</button>
+<a target="_blank" rel="noopener noreferrer" href="https://forum.netmarble.com/sk2/view/13/746266">회원 번호 확인 법</a>
 <hr>
-<br>
+<span>쿠폰 코드 수정 가능.</span><br><br>
+<span>4/12 : 2STHGINNEVES 추가</span><br><br>
+<a target="_blank" rel="noopener noreferrer" href="https://forum.netmarble.com/sk2/view/27/762885">코드 출처 : 마스터냥이</a><br>
+
 
 <div id="example-table"></div>
 
@@ -18,45 +22,46 @@
 
 <script>
     var tabledata = [
-        {id: 1, code: "KINGADEL", result: 0, response: ''},
-        {id: 2, code: "DANJANGNIMLUV", result: 0, response: ''},
-        {id: 3, code: "GUMANKM", result: 0, response: ''},
-        {id: 4, code: "BIGUPDATE", result: 0, response: ''},
-        {id: 5, code: "SENAYAHO", result: 0, response: ''},
-        {id: 6, code: "VELVET", result: 0, response: ''},
-        {id: 7, code: "GOGOSENA", result: 0, response: ''},
-        {id: 8, code: "COMINGSOON", result: 0, response: ''},
-        {id: 9, code: "NEWSCENARIO", result: 0, response: ''},
-        {id: 10, code: "DUGUDUGU", result: 0, response: ''},
-        {id: 11, code: "EVENTMATJIB", result: 0, response: ''},
-        {id: 12, code: "LADY", result: 0, response: ''},
-        {id: 13, code: "LEGENDSENA", result: 0, response: ''},
-        {id: 14, code: "REINFORCE", result: 0, response: ''},
-        {id: 15, code: "DUDUDUNGA", result: 0, response: ''},
-        {id: 16, code: "ONESHOT", result: 0, response: ''},
-        {id: 17, code: "KEEEEE", result: 0, response: ''},
-        {id: 18, code: "8RAID8", result: 0, response: ''},
-        {id: 19, code: "EVAN", result: 0, response: ''},
-        {id: 20, code: "4RAID4", result: 0, response: ''},
-        {id: 21, code: "WOWSENA", result: 0, response: ''},
-        {id: 22, code: "LADYKILLER", result: 0, response: ''},
-        {id: 23, code: "HAPPYCOCO", result: 0, response: ''},
-        {id: 24, code: "OLDRUDY", result: 0, response: ''},
-        {id: 25, code: "IMSOHOT", result: 0, response: ''},
-        {id: 26, code: "UPDATE", result: 0, response: ''},
-        {id: 27, code: "SENAFOREVER", result: 0, response: ''},
-        {id: 28, code: "SEYAHO", result: 0, response: ''},
-        {id: 29, code: "SKNIGHTS2", result: 0, response: ''},
-        {id: 30, code: "HISENA2", result: 0, response: ''},
-        {id: 31, code: "7INFINITE7", result: 0, response: ''},
-        {id: 32, code: "TPQMSSKDLCM2", result: 0, response: ''},
-        {id: 33, code: "GREATEVENT", result: 0, response: ''},
-        {id: 34, code: "2SEVEN2", result: 0, response: ''},
-        {id: 35, code: "SK2FORUM", result: 0, response: ''},
-        {id: 36, code: "SENAINSSA", result: 0, response: ''},
-        {id: 37, code: "2S2E2V2E2N", result: 0, response: ''},
-        {id: 38, code: "COCOJOA", result: 0, response: ''},
-        {id: 39, code: "CHECKCHECK", result: 0, response: ''},
+        {id: 1, code: "KINGADEL", result: 0, response: '', description: '요청 전'},
+        {id: 2, code: "DANJANGNIMLUV", result: 0, response: '', description: '요청 전'},
+        {id: 3, code: "GUMANKM", result: 0, response: '', description: '요청 전'},
+        {id: 4, code: "BIGUPDATE", result: 0, response: '', description: '요청 전'},
+        {id: 5, code: "SENAYAHO", result: 0, response: '', description: '요청 전'},
+        {id: 6, code: "VELVET", result: 0, response: '', description: '요청 전'},
+        {id: 7, code: "GOGOSENA", result: 0, response: '', description: '요청 전'},
+        {id: 8, code: "COMINGSOON", result: 0, response: '', description: '요청 전'},
+        {id: 9, code: "NEWSCENARIO", result: 0, response: '', description: '요청 전'},
+        {id: 10, code: "DUGUDUGU", result: 0, response: '', description: '요청 전'},
+        {id: 11, code: "EVENTMATJIB", result: 0, response: '', description: '요청 전'},
+        {id: 12, code: "LADY", result: 0, response: '', description: '요청 전'},
+        {id: 13, code: "LEGENDSENA", result: 0, response: '', description: '요청 전'},
+        {id: 14, code: "REINFORCE", result: 0, response: '', description: '요청 전'},
+        {id: 15, code: "DUDUDUNGA", result: 0, response: '', description: '요청 전'},
+        {id: 16, code: "ONESHOT", result: 0, response: '', description: '요청 전'},
+        {id: 17, code: "KEEEEE", result: 0, response: '', description: '요청 전'},
+        {id: 18, code: "8RAID8", result: 0, response: '', description: '요청 전'},
+        {id: 19, code: "EVAN", result: 0, response: '', description: '요청 전'},
+        {id: 20, code: "4RAID4", result: 0, response: '', description: '요청 전'},
+        {id: 21, code: "WOWSENA", result: 0, response: '', description: '요청 전'},
+        {id: 22, code: "LADYKILLER", result: 0, response: '', description: '요청 전'},
+        {id: 23, code: "HAPPYCOCO", result: 0, response: '', description: '요청 전'},
+        {id: 24, code: "OLDRUDY", result: 0, response: '', description: '요청 전'},
+        {id: 25, code: "IMSOHOT", result: 0, response: '', description: '요청 전'},
+        {id: 26, code: "UPDATE", result: 0, response: '', description: '요청 전'},
+        {id: 27, code: "SENAFOREVER", result: 0, response: '', description: '요청 전'},
+        {id: 28, code: "SEYAHO", result: 0, response: '', description: '요청 전'},
+        {id: 29, code: "SKNIGHTS2", result: 0, response: '', description: '요청 전'},
+        {id: 30, code: "HISENA2", result: 0, response: '', description: '요청 전'},
+        {id: 31, code: "7INFINITE7", result: 0, response: '', description: '요청 전'},
+        {id: 32, code: "TPQMSSKDLCM2", result: 0, response: '', description: '요청 전'},
+        {id: 33, code: "GREATEVENT", result: 0, response: '', description: '요청 전'},
+        {id: 34, code: "2SEVEN2", result: 0, response: '', description: '요청 전'},
+        {id: 35, code: "SK2FORUM", result: 0, response: '', description: '요청 전'},
+        {id: 36, code: "SENAINSSA", result: 0, response: '', description: '요청 전'},
+        {id: 37, code: "2S2E2V2E2N", result: 0, response: '', description: '요청 전'},
+        {id: 38, code: "COCOJOA", result: 0, response: '', description: '요청 전'},
+        {id: 39, code: "CHECKCHECK", result: 0, response: '', description: '요청 전'},
+        {id: 40, code: "2STHGINNEVES", result: 0, response: '', description: '요청 전'},
     ];
 
     function req() {
@@ -76,6 +81,19 @@
                 success: function (data) {
                     if (data['resultCode'] === 'SUCCESS') {
                         tabledata[i]['result'] = 1
+                        tabledata[i]['description'] = '성공'
+                    }
+                    else if (data['resultCode'] === 'NOT_EXISTS_PID') {
+                        tabledata[i]['description'] = '회원번호 오류'
+                    }
+                    else if (data['resultCode'] === 'COUPON_ALREADY_USE') {
+                        tabledata[i]['description'] = '이미 사용한 쿠폰'
+                    }
+                    else if (data['resultCode'] === 'COUPON_WRONG') {
+                        tabledata[i]['description'] = '잘못된 쿠폰 코드'
+                    }
+                    else {
+                        tabledata[i]['description'] = '나도 모르는 응답코드'
                     }
                     tabledata[i]['response'] = data['resultCode']
                     table.updateData(tabledata)
@@ -95,6 +113,7 @@
         movableColumns: true,      //allow column order to be changed
         resizableRows: true,       //allow row order to be changed
         columns: [                 //define the table columns
+            {title: "No", field: "id", width: 70, editor: false},
             {title: "Code", field: "code", width: 300, editor: "input"},
             {
                 title: "status",
@@ -106,6 +125,7 @@
                 editor: false
             },
             {title: "response", field: "response", width: 180, editor: false},
+            {title: "설명", field: "description", width: 300, editor: false},
         ],
     });
 </script>
