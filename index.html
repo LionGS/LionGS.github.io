@@ -11,7 +11,7 @@
 <hr>
 <span>쿠폰 코드 수정 가능.</span><br><br>
 <span>4/12 : 2STHGINNEVES 추가</span><br><br>
-<a target="_blank" rel="noopener noreferrer" href="https://forum.netmarble.com/sk2/view/27/762885">코드 출처 : 마스터냥이</a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://forum.netmarble.com/sk2/view/27/770604">코드 출처 : 마스터냥이</a><br>
 
 
 <div id="example-table"></div>
@@ -62,6 +62,9 @@
         {id: 38, code: "COCOJOA", result: 0, response: '', description: '요청 전'},
         {id: 39, code: "CHECKCHECK", result: 0, response: '', description: '요청 전'},
         {id: 40, code: "2STHGINNEVES", result: 0, response: '', description: '요청 전'},
+        {id: 41, code: "SENAMOON", result: 0, response: '', description: '요청 전'},
+        {id: 42, code: "KEKESENA2", result: 0, response: '', description: '요청 전'},
+        {id: 43, code: "SENAGA", result: 0, response: '', description: '요청 전'},
     ];
 
     function req() {
@@ -81,7 +84,7 @@
                 success: function (data) {
                     if (data['resultCode'] === 'SUCCESS') {
                         tabledata[i]['result'] = 1
-                        tabledata[i]['description'] = '성공'
+                        tabledata[i]['description'] = data['rewardItem']['rewardTitle']
                     }
                     else if (data['resultCode'] === 'NOT_EXISTS_PID') {
                         tabledata[i]['description'] = '회원번호 오류'
