@@ -21,6 +21,28 @@
 <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.4/dist/js/tabulator.min.js"></script>
 
 <script>
+    function setCookie(cookie_name, value, days) {
+      var exdate = new Date();
+      exdate.setDate(exdate.getDate() + days);
+
+      var cookie_value = escape(value) + ((days == null) ? '' : '; expires=' + exdate.toUTCString());
+      document.cookie = cookie_name + '=' + cookie_value;
+    }
+
+    function getCookie(cookie_name) {
+      var x, y;
+      var val = document.cookie.split(';');
+
+      for (var i = 0; i < val.length; i++) {
+        x = val[i].substr(0, val[i].indexOf('='));
+        y = val[i].substr(val[i].indexOf('=') + 1);
+        x = x.replace(/^\s+|\s+$/g, '');
+        if (x == cookie_name) {
+          return unescape(y);
+        }
+      }
+    }
+
     var tabledata = [
         {id: 1, code: "KINGADEL", result: 0, response: '', description: '요청 전'},
         {id: 2, code: "DANJANGNIMLUV", result: 0, response: '', description: '요청 전'},
@@ -65,6 +87,26 @@
         {id: 41, code: "SENAMOON", result: 0, response: '', description: '요청 전'},
         {id: 42, code: "KEKESENA2", result: 0, response: '', description: '요청 전'},
         {id: 43, code: "SENAGA", result: 0, response: '', description: '요청 전'},
+        {id: 44, code: "7S7E7V7E7N", result: 0, response: '', description: '요청 전'},
+        {id: 45, code: "guildsuccess", result: 0, response: '', description: '요청 전'},
+        {id: 46, code: "STRONGROCK", result: 0, response: '', description: '요청 전'},
+        {id: 47, code: "SK2ARENA", result: 0, response: '', description: '요청 전'},
+        {id: 48, code: "EVANKARIN", result: 0, response: '', description: '요청 전'},
+        {id: 49, code: "2SENA2", result: 0, response: '', description: '요청 전'},
+        {id: 50, code: "BOSSKING", result: 0, response: '', description: '요청 전'},
+        {id: 51, code: "SENA2AGGYOJUSEYO", result: 0, response: '', description: '요청 전'},
+        {id: 52, code: "JUSEYO", result: 0, response: '', description: '요청 전'},
+        {id: 53, code: "ANAWIFI", result: 0, response: '', description: '요청 전'},
+        {id: 54, code: "UHPRETTY", result: 0, response: '', description: '요청 전'},
+        {id: 55, code: "GIVEMEGIFT", result: 0, response: '', description: '요청 전'},
+        {id: 56, code: "BIGBIGEVENT", result: 0, response: '', description: '요청 전'},
+        {id: 57, code: "SENA2YEONHEE", result: 0, response: '', description: '요청 전'},
+        {id: 58, code: "FROMCOCO", result: 0, response: '', description: '요청 전'},
+        {id: 59, code: "SENA2LENE", result: 0, response: '', description: '요청 전'},
+        {id: 60, code: "AYAAPAYO", result: 0, response: '', description: '요청 전'},
+        {id: 61, code: "SENA2GUIDE", result: 0, response: '', description: '요청 전'},
+        {id: 62, code: "SENA2RUDY", result: 0, response: '', description: '요청 전'},
+        {id: 63, code: "LUVCOCO", result: 0, response: '', description: '요청 전'},
     ];
 
     function req() {
@@ -85,17 +127,13 @@
                     if (data['resultCode'] === 'SUCCESS') {
                         tabledata[i]['result'] = 1
                         tabledata[i]['description'] = data['rewardItem']['rewardTitle']
-                    }
-                    else if (data['resultCode'] === 'NOT_EXISTS_PID') {
+                    } else if (data['resultCode'] === 'NOT_EXISTS_PID') {
                         tabledata[i]['description'] = '회원번호 오류'
-                    }
-                    else if (data['resultCode'] === 'COUPON_ALREADY_USE') {
+                    } else if (data['resultCode'] === 'COUPON_ALREADY_USE') {
                         tabledata[i]['description'] = '이미 사용한 쿠폰'
-                    }
-                    else if (data['resultCode'] === 'COUPON_WRONG') {
+                    } else if (data['resultCode'] === 'COUPON_WRONG') {
                         tabledata[i]['description'] = '잘못된 쿠폰 코드'
-                    }
-                    else {
+                    } else {
                         tabledata[i]['description'] = '나도 모르는 응답코드'
                     }
                     tabledata[i]['response'] = data['resultCode']
